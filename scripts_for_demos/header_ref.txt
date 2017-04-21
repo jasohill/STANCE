@@ -1,0 +1,249 @@
+Example Data from Chris Rorden
+===============================
+
+
+
+T1s005.nii	-	high res. T1-w anatomical image
+
+------------
+[Dimensions]
+------------
+HeaderType: n+1: NIfTI embedded (.nii)
+
+Dimension	Length	Spacing	Unit
+I		176	1.0
+J		211	1.0	mm
+K		163	1.0
+T		1	2.25	sec
+5th		1	1
+6th		1	1
+7th		1	1
+Offset: 352
+
+Data: 16-bit int S*	little-endian: Intel
+
+----------
+[Reorient]
+----------
+Quaterion parameters: Scanner Position
+qFactor: 	1.0
+Quaternions: 	-0.000201	-0.046232	-0.004337
+Q Offsets:	-78.266113	-74.46891	-96.285942
+Affine parameters: Coregistration
+X 0.995688	0.008683	-0.092363	-78.266113
+Y -0.008645	0.999962	0.000802	-74.46891
+Z 0.092366	0.0		0.995725	-96.285942
+
+X: 1 + (86.1783)	~ 87 
+Y: 1 + (75.1456)	~ 76
+Z: 1 + (88.7052)	~ 90  
+
+Displayed origin: [X,Y,Z] = [87, 76, 90]
+AC:		
+
+-----------------
+[Image Intensity]
+-----------------
+Calibration Scaling
+Slope: 		1.0
+Intercept:	0.0
+
+Display Range (calibrated units)
+Minimum:0.0
+Maximum:0.0
+
+------
+[fMRI]
+------
+Time Offset:	0.0
+Slice duration: 0.0
+Slice Start:	0
+Slice End:	0
+Slice Order: 	Unknown
+Frequency Dim:	Unknown
+Phase Dim:	Unknown
+Slice Dim:	Unknown
+
+----------
+[Optional]
+----------
+Intention:
+Data Type:
+Notes:
+DB Name: 	?TR:2250.000 TR:4
+G Min:	0
+G Max:	255
+Session Error:	0
+Extents:	0
+Regular[114]	114
+
+
+fmriblocks009.nii	-	EPI data
+
+------------
+[Dimensions]
+------------
+HeaderType: n+1: NIfTI embedded (.nii)
+
+Dimension	Length	Spacing	Unit
+I		64	3.0
+J		64	3.0	mm
+K		36	3.6
+T		302	1.92	sec
+5th		1	1
+6th		1	1
+7th		1	1
+Offset: 352
+
+Data: 16-bit int S*	little-endian: Intel
+
+----------
+[Reorient]
+----------
+Quaterion parameters: Scanner Position
+qFactor: 	1.0
+Quaternions: 	0.053063	-0.032255	-0.001715
+Q Offsets:	-89.10116	-63.38129	-74.011208
+Affine parameters: Coregistration
+X 2.993740	0.0		-0.232442	-89.101166
+Y -0.008645	2.98308		-0.380917	-63.381290
+Z 0.192610	0.318095	3.572236	-74.011208
+
+X: 1 + (31.0785) = 32 
+Y: 1 +(23.5014) = 25
+Z: 1 + (16.95) = 18  
+
+Displayed origin: [X,Y,Z] = [32, 25, 18]
+
+
+AC:		
+
+-----------------
+[Image Intensity]
+-----------------
+Calibration Scaling
+Slope: 		1.0
+Intercept:	0.0
+
+Display Range (calibrated units)
+Minimum:0.0
+Maximum:0.0
+
+------------
+[Statistics]
+------------
+Intention: Not Statistics
+Parameter1: 0.0
+Parameter2: 0.0
+Parameter3: 0.0
+
+------
+[fMRI]
+------
+Time Offset:	0.0
+Slice duration: 0.0
+Slice Start:	0
+Slice End:	0
+Slice Order: 	Unknown
+Frequency Dim:	Unknown
+Phase Dim:	Unknown
+Slice Dim:	Unknown
+
+----------
+[Optional]
+----------
+Intention:
+Data Type:
+Notes:
+DB Name: 	?TR:1920.000 TR:30
+G Min:	0
+G Max:	255
+Session Error:	0
+Extents:	0
+Regular[114]	114
+
+
+
+sub*.nii   - resting state EPI data
+
+------------
+[Dimensions]
+------------
+HeaderType: n+1: NIfTI embedded (.nii)
+
+Dimension	Length	Spacing	Unit
+I		61	3.0
+J		73	3.0	mm
+K		61	3.0
+T		220	0.0	sec
+5th		1	1
+6th		1	1
+7th		1	1
+Offset: 352
+
+Data: 16-bit int S*	little-endian: Intel
+
+----------
+[Reorient]
+----------
+Quaterion parameters: Coregistation
+qFactor: 	1.0
+Quaternions: 	0.0	0.0	0.0
+Q Offsets:	-90.0	-126.0	-72.0
+Affine parameters: Coregistration
+X 3.0		0.0		0.0	-90.0
+Y 0.0		3.0		0.0	-126.0
+Z 0.0		0.0		3.0	-72.0
+
+Displayed origin: [X,Y,Z] = [31, 43, 25]
+
+X: 1 + (90)/3 = 31 
+Y: 1 +(126)/3 = 43
+Z: 1 + (72)/3 = 25  
+
+AC: [31, 43, 25]		
+
+-----------------
+[Image Intensity]
+-----------------
+Calibration Scaling
+Slope: 		1.0
+Intercept:	0.0
+
+Display Range (calibrated units)
+Minimum:0.0
+Maximum:0.0
+
+------------
+[Statistics]
+------------
+Intention: Not Statistics
+Parameter1: 0.0
+Parameter2: 0.0
+Parameter3: 0.0
+
+------
+[fMRI]
+------
+Time Offset:	0.0
+Slice duration: 0.0
+Slice Start:	0
+Slice End:	0
+Slice Order: 	Unknown
+Frequency Dim:	Unknown
+Phase Dim:	Unknown
+Slice Dim:	Unknown
+
+----------
+[Optional]
+----------
+Intention:
+Data Type:
+Notes:		spm - 3D normalized - conv(4,4,4)
+DB Name: 	?TR:1920.000 TR:30
+G Min:	0
+G Max:	0
+Session Error:	0
+Extents:	0
+Regular[114]	114
+
