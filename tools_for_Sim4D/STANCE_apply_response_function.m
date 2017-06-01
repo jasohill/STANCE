@@ -1,4 +1,4 @@
-function OUT_ts = STANCE_apply_response_function(dt, ts, response_function, param, sliceOrder)
+function OUT_ts = STANCE_apply_response_function(dt, ts, response_function, param, sliceOrder, model, ratio)
 %%% Spontaneous and Task-related Activation of Neuronally Correlated Events (STANCE) %%%
 %
 % Generates a time series Out_ts by applying the requested response_function to ts.
@@ -10,13 +10,30 @@ function OUT_ts = STANCE_apply_response_function(dt, ts, response_function, para
 %
 % Arguments
 %     dt:                the sample time of the timeseries [s].
-%     ts:                timeseries
+%     ts:                timeseries, e.g. the experimental design boxcar function
 %     response_function: name of requested response function 
 %     param:             structure of response function parameters
-%     
+%     sliceOrder:        the slice order string code (default = 'SD'
+%                        denoting sequential descending order)
+%     model:             Choices: 'sustained' (default) or 'on-off' which
+%                        is a transient response depending on the derivative of ts
+%     ratio:             The ratio of the onset to the offset response amplitudes
+%
 
 %%
+if nargin < 7
+    ratio = 1;
+end
+if nargin < 6
+    model = 'sustained';
+end
+if isempty(model)
+    model = 'sustained';
+end
 if nargin < 5
+    sliceOrder = 'SD';
+end
+if isempty(sliceOrder)
     sliceOrder = 'SD';
 end
 if nargin < 4
@@ -25,10 +42,28 @@ end
 if nargin < 3
     response_function = 'canonical';
 end
-
+if isempty(response_function)
+    response_function = 'canonical';
+end
+    
 [Nt,ne] = size(ts.Data);
 T_scan = Nt*dt;
 
+if strcmp(model,'on-off')
+    model
+    % the transient model of when the experimental design turns on and off
+    ts_data = ts.Data;
+    for i = 1:ne
+        ts_data(2:Nt,i) =  ts_data(2:Nt,i) - ts_data(1:Nt-1,i); 
+    end
+    if ratio < 1
+        ts_data(ts_data(:,i)>0,i) = ratio*ts_data(ts_data(:,i)>0,i);  
+    elseif ratio > 1 
+        ts_data(ts_data(:,i)<0,i) = (1.0/ratio)*ts_data(ts_data(:,i)<0,i);         
+    end
+    ts.Data = abs(ts_data);
+end    
+    
 %% generate the response output to the input time-series
 switch response_function
     case {'gamma','single','Gamma'}
@@ -41,7 +76,7 @@ switch response_function
         display('o Applying the triple Gamma response function to time-series.');    
     case 'logit'
         display('o Applying the triple logit response function to time-series.'); 
-    case 'ballon'
+    case 'balloon'
         display('o Applying the balloon response to the time-series.');         
     case {'RRF','respiratory'}
         display('o Applying the respiratory response function to time-series.'); 
@@ -51,11 +86,11 @@ end
 for i = 1:ne
     switch response_function
         case {'gamma','single','Gamma','canonical', 'double','triple','logit'}
-            ts_conv_Data = STANCE_convolve_response_function(dt,ts.Data(:,ne),response_function,param,sliceOrder,30);
+            ts_conv_Data = STANCE_convolve_response_function(dt,ts.Data(:,i),response_function,param,sliceOrder,30);
         case {'CRF','cardiac','RRF','respiratory'}
-            ts_conv_Data = STANCE_convolve_response_function(dt,ts.Data(:,ne),response_function,param,sliceOrder,50);
+            ts_conv_Data = STANCE_convolve_response_function(dt,ts.Data(:,i),response_function,param,sliceOrder,50);
         case {'Balloon','balloon'}
-            ts_conv_Data = balloon(ts.Data(:,ne),dt, T_scan);
+            ts_conv_Data = balloon(ts.Data(:,i),dt, T_scan);
             % no support for variability yet
     end
     
