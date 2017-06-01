@@ -465,12 +465,24 @@ ylim([-0.2 1.2])
 xlim([0 times(end)])
 xlabel('time (s)') 
 ylabel('task on = 1/off = 0')
-title('Predicted BOLD response of design')
+title('Predicted sustained BOLD response of design')
 lgdBOLD = legend('design','canonical','gamma','triple','logit','balloon','Location','best');
 title(lgdBOLD,'Various HRF')
 movegui(h_predictedBOLD,'southwest');
 
-clear BOLD_gamma_ts  BOLD_triple_ts BOLD_logit_ts BOLD_balloon_ts;
+BOLD_OO_ts = STANCE_apply_response_function(dt,exp_design,[],[],[],'on-off',0.5);
+h_predictedOOBOLD = figure;
+plot(times,exp_design.Data,times,BOLD_OO_ts.Data,'LineWidth',1.25);
+ylim([-0.2 1.2])
+xlim([0 times(end)])
+xlabel('time (s)') 
+ylabel('task on = 1/off = 0')
+title('Predicted transient BOLD response of design')
+lgdOOBOLD = legend('design','onset-offset','Location','best');
+title(lgdOOBOLD,'OSO HRF model')
+movegui(h_predictedOOBOLD,'northwest');
+
+clear BOLD_gamma_ts  BOLD_triple_ts BOLD_logit_ts BOLD_balloon_ts BOLD_OO_ts;
 
 T2star_4D = zeros(size(Y_T2star_Map,1),size(Y_T2star_Map,2),Nslices,NT);
 
