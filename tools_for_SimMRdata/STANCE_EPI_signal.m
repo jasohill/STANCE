@@ -311,7 +311,7 @@ for t = 1:sz(4)
 %           tic
                for x = 1:size(Y_signal,1)
                   I_x_slice = squeeze(Y_signal(x,:,:));
-                  % reduce magnitude due to average spin-history:
+                  % reduce magnitude due to average spin-history over TR:
                   %    (1-(b/t)*\theta/N_ADCs) where b = base, t = slice thickness
                   %    and using tan(\theta) ~ \theta for small angles
                   I_x_slice = I_x_slice*(1-(0.5/N_ADCs)*dtheta_x(t)*scan.voxel.size(1)*scan.voxel.matrix(1)/scan.voxel.size(3));
@@ -320,8 +320,8 @@ for t = 1:sz(4)
                end               
                for y = 1:size(Y_signal,2)
                   I_y_slice = squeeze(Y_signal(:,y,:));
-                  % reduce magnitude due to average spin-history:
-                  %    (1-(b/t)*\theta/N_ADCs) where b = base, t = slice thickness
+                  % reduce magnitude due to average spin-history over TR:
+                  %    (1-(b/s)*\theta/N_ADCs) where b = base, s = slice thickness
                   %    and using tan(\theta) ~ \theta for small angles
                   I_y_slice = I_y_slice*(1-(0.5/N_ADCs)*dtheta_y(t)*scan.voxel.size(2)*scan.voxel.matrix(2)/scan.voxel.size(3));
                   % add rigid body rotation                  
