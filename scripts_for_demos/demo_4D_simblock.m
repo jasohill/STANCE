@@ -547,7 +547,7 @@ HRF_param.c      = (1/6.0);
 % as detailed in Figure 2 for the FWHM map (TR = 2.5s @ 2T) in 
 % "Sensitivity of the resting state hemodynamic response function
 % estimation to autonomic nervous system fluctuations"
-% by Guo-Rong Wua & Daniele Marinazzo, who were accepted by
+% by Guo-Rong Wu & Daniele Marinazzo, who were accepted by
 % Phil. Trans. R. Soc. A. (in press)
 FWHMfactor = gamFWHM(HRF_param.alpha1);
 beta1_map = 0.*Y_atlas + FWHMfactor/6.5; % default amplitude (visual cortex)
