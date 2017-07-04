@@ -2,13 +2,11 @@ function [RVT,FRC,TIV] = STANCE_RVT(dt,Nt,RTI,RTI_sigma,weight,A_sigma,SighTI,Si
 %%% Spontaneous and Task-related Activation of Neuronally Correlated Events (STANCE) %%%
 %
 % Generates a respiratory volume time-series (RVT) characterized by 
-% average respiratory time RTI with variance var_RTI for a person of 
+% average respiratory time RTI with standard deviation RTI_sigma for a person of 
 % a specific weight (optional)
 % Outputs are in units of mL. 
 % FRC - Functional Residual Capacity, the lung volume left after a normal exhalation
 % TIV - Typical Inspiratory Volume, the lung volume after normal inhalation.
-% IRV - Inspiratory Reserve Volume (IRV), the lung volume after taking the
-%       largest inhalation possible
 %
 %   author:         Dr. Jason E. Hill (post-doc fellow with CNT at TTU)
 %   updated:        21 NOV 2016
