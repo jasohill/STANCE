@@ -9,17 +9,17 @@ function out = tripleLogitHRF(t, varargin)
 % t: Time vector in seconds.
 % param: List of parameters of the hemodynamic response function. The list should
 %        contain the following:
-%        A1 amplitude weight of 1st gamma distribution (default: 0.5)
-%        A2 amplitude weight of 2nd gamma distribution (default: 6)
-%        A3 amplitude weight of 3rd gamma distribution (default: 1)
-%        alpha1 Time to peak of 1st gamma distribution (default: 1.5)
-%        alpha2 Time to peak of 2nd gamma distribution (default: 7)
-%        alpha3 Time to peak of 3rd gamma distribution (default: 16)
-%        beta1 Dispersion of 1st gamma distribution    (default: 0.8)
-%        beta2 Dispersion of 2nd gamma distribution    (default: 1)
-%        beta3 Dispersion of 3rd gamma distribution    (default: 1)
+%        A1 amplitude weight of 1st inverse logit function (default: 1)
+%        A2 amplitude weight of 2nd inverse logit function (default: 1)
+%        A3 amplitude weight of 3rd inverse logit function (default: 1)
+%        T1 shift center of 1st inverse logit function     (default: 4)
+%        T2 shift center of 2nd inverse logit function     (default: 5)
+%        T3 shift center of 3rd inverse logit function     (default: 10)
+%        D1 slope of 1st inverse logit function            (default: 1)
+%        D2 slope of 2nd inverse logit function            (default: 1.5)
+%        D3 slope of 3rd inverse logit function            (default: 2)
 %        Defaults from Shan et al "Modeling of the hemodynamic responses in block design fMRI
-%            studies" J. of Cerebral Blood Flow & Metabolism (2014) 34,
+%            studies" J. of Cerebral Blood Flow & Metabolism (2014) 34(2),
 %            316–324.
 %
 % verbose If true, warnings are displayed.

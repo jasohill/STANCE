@@ -129,7 +129,7 @@ end
 if (theta_map_flag) || (k_map_flag) || (onset_map_flag)
     % assume 3D parameter maps
     for i = 1:length(t)
-       out(:,:,:,i) = ((1./(theta.^k)).*((t(i)-onset).^(k-1)).*exp(-(t(i)-onset)./k)./gamma(k)); %#ok<AGROW>
+       out(:,:,:,i) = (1./((theta.^k).*gamma(k))).*((t(i)-onset).^(k-1)).*exp(-(t(i)-onset)./theta); %#ok<AGROW>
     end
 
 else  

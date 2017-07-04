@@ -50,7 +50,6 @@ end
 T_scan = Nt*dt;
 
 if strcmp(model,'on-off')
-    model
     % the transient model of when the experimental design turns on and off
     ts_data = ts.Data;
     for i = 1:ne
